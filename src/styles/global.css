@@ -30,6 +30,10 @@
   --fsz-default: 1rem;
 
   --lh-medium: 1.4rem;
+  
+  /** Toastify **/
+  --toastify-color-progress-dark: var(--purple);
+  --toastify-color-progress-info: var(--blue)
 }
 
 :focus {

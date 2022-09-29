@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { toast } from 'react-toastify'
+
 import { Header } from "../components/Header"
 import { TaskCreator } from "../components/TaskCreator"
 import { EmptyTasks } from "../components/EmptyTasks"
@@ -17,12 +19,21 @@ export const Home = () => {
   } = styles
   
   const [tasks, setTasks] = useState<Tasks[]>([]);
+  const [existingTask, setExistingTask] = useState<boolean>(false);
 
   const createNewTask = (content: string) => {
-    setTasks([
-      { id: tasks.length + 1, isCompleted: false, content },
-      ...tasks
-    ])
+    const taskAlreadyExists = tasks.find(task => task.content === content)
+
+    if (taskAlreadyExists) {
+      setExistingTask(true);
+      toast.info("Can't create a task that exists", { theme: 'dark' })
+    } else {
+      setExistingTask(true)
+      setTasks([
+        { id: tasks.length + 1, isCompleted: false, content },
+        ...tasks
+      ])
+    }
   }
 
   const deleteExistingTask = (id: number) => {
@@ -37,6 +48,7 @@ export const Home = () => {
       <section className={home}>
         <TaskCreator
           onCreateTask={createNewTask}
+          isExistingTask={existingTask}
         />
 
         <div className={h__counters}>

@@ -6,9 +6,10 @@ import styles from './TaskCreator.module.css'
 
 interface TaskCreatorProps {
   onCreateTask: (content: string) => void
+  isExistingTask: boolean
 }
 
-export const TaskCreator = ({ onCreateTask }: TaskCreatorProps) => {
+export const TaskCreator = ({ onCreateTask, isExistingTask }: TaskCreatorProps) => {
   const { taskForm, t__input, t__create } = styles
 
   const [taskText, setTaskText] = useState<string>("")
@@ -17,7 +18,8 @@ export const TaskCreator = ({ onCreateTask }: TaskCreatorProps) => {
     ev.preventDefault()
 
     onCreateTask(taskText)
-    setTaskText('')
+
+    !isExistingTask && setTaskText('')
   }
 
   return (
