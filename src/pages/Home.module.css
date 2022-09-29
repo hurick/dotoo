@@ -1,0 +1,5 @@
+.home {
+  width: 100%;
+  max-width: 48rem;
+  margin: calc(0px - (3.4375rem / 2)) auto 1rem;
+}
