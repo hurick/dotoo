@@ -1,0 +1,50 @@
+.taskForm {
+  display: flex;
+  gap: .5rem;
+  
+  min-height: 55px;
+  max-height: 55px;
+}
+
+.t__input {
+  width: 100%;
+
+  padding: 1rem;
+  background-color: var(--gray-500);
+  border-radius: 8px;
+  border: 0;
+
+  color: var(--gray-100);
+  border: 1px solid transparent;
+
+  transition-property: border-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: .2s;
+}
+
+.t__input::placeholder { color: var(--gray-300); }
+.t__input:focus { border: 1px solid var(--purple-dark); }
+
+.t__create {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
+  min-width: 7rem;
+  padding: 1rem;
+
+  background-color: var(--blue-dark);
+  border: 0;
+  border-radius: 8px;
+
+  font-size: var(--fsz-medium);
+  color: var(--gray-100);
+  line-height: 1em;
+
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: .2s;
+}
+
+.t__create:hover { background-color: var(--blue) }
