@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 4.5rem 2.75rem;
+  background-color: var(--gray-700);
+}
+
+.h__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+}
+
+.hl__title {
+  font-size: 2.5rem;
+  font-weight: var(--black);
+  color: var(--blue);
+}
+
+.hlt__detail {
+  color: var(--purple-dark);
+}
