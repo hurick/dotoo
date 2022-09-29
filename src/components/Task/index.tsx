@@ -6,10 +6,11 @@ import { Tasks } from './Task'
 import styles from './Task.module.css'
 
 interface TaskProps {
-  task: Tasks
+  task: Tasks,
+  onDeleteTask: (id: number) => void
 }
 
-export const Task = ({ task }: TaskProps) => {
+export const Task = ({ task, onDeleteTask }: TaskProps) => {
   const {
     taskItem, ti__hiddenCheckbox, ti__checkbox,
     ti__content, ti__delete, tic__check, is__checked
@@ -20,6 +21,10 @@ export const Task = ({ task }: TaskProps) => {
 
   const handleTaskChecked = (ev: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(ev.target.checked)
+  }
+
+  const handleDeleteTask = (id: number) => {
+    onDeleteTask(id)
   }
 
   return (
@@ -47,6 +52,7 @@ export const Task = ({ task }: TaskProps) => {
         className={ti__delete}
         type="button"
         title="Delete this task"
+        onClick={() => handleDeleteTask(task.id)}
       >
         <Trash size={24} />
       </button>

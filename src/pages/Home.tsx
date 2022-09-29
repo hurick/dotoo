@@ -25,6 +25,11 @@ export const Home = () => {
     ])
   }
 
+  const deleteExistingTask = (id: number) => {
+    const filtedTaskList = tasks.filter(task => task.id !== id)
+    setTasks(filtedTaskList)
+  }
+
   return (
     <>
       <Header />
@@ -52,6 +57,7 @@ export const Home = () => {
               <Task
                 key={task.id}
                 task={task}
+                onDeleteTask={deleteExistingTask}
               />
             ))
         }
