@@ -2,8 +2,8 @@
   display: flex;
   gap: .5rem;
   
-  min-height: 55px;
-  max-height: 55px;
+  min-height: 3.4375rem;
+  max-height: 3.4375rem;
 }
 
 .t__input {
