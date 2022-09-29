@@ -3,3 +3,35 @@
   max-width: 48rem;
   margin: calc(0px - (3.4375rem / 2)) auto 1rem;
 }
+
+.h__counters {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 4rem 0 1.5rem;
+}
+
+.hc__created,
+.hc__completed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
+  font-size: var(--fsz-medium);
+  line-height: 1em;
+}
+
+.hc__created { color: var(--blue); }
+.hc__completed { color: var(--purple); }
+
+.hcc__number {
+  display: inline-flex;
+  
+  padding: .125rem .5rem;
+  background-color: var(--gray-400);
+  border-radius: 7rem;
+  
+  font-size: var(--fsz-small);
+  color: var(--gray-200);
+}

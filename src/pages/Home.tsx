@@ -4,7 +4,11 @@ import { TaskCreator } from "../components/TaskCreator";
 import styles from './Home.module.css'
 
 export const Home = () => {
-  const { home } = styles;
+  const {
+    home, h__counters,
+    hc__created, hc__completed,
+    hcc__number
+  } = styles;
 
   return (
     <>
@@ -12,6 +16,18 @@ export const Home = () => {
 
       <section className={home}>
         <TaskCreator />
+
+        <div className={h__counters}>
+          <strong className={hc__created}>
+            <span>Tasks created</span>
+            <span className={hcc__number}>0</span>
+          </strong>
+
+          <strong className={hc__completed}>
+            <span>Completed</span>
+            <span className={hcc__number}>0</span>
+          </strong>
+        </div>
       </section>
     </>
   )
