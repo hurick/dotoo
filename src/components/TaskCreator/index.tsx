@@ -3,7 +3,7 @@ import { PlusCircle } from 'phosphor-react'
 import styles from './TaskCreator.module.css'
 
 export const TaskCreator = () => {
-  const { taskForm, t__input, t__create } = styles;
+  const { taskForm, t__input, t__create } = styles
 
   const handleNewTask = () => {}
 

@@ -1,5 +1,6 @@
 import { Header } from "../components/Header"
-import { TaskCreator } from "../components/TaskCreator";
+import { TaskCreator } from "../components/TaskCreator"
+import { EmptyTasks } from "../components/EmptyTasks"
 
 import styles from './Home.module.css'
 
@@ -8,7 +9,7 @@ export const Home = () => {
     home, h__counters,
     hc__created, hc__completed,
     hcc__number
-  } = styles;
+  } = styles
 
   return (
     <>
@@ -28,6 +29,8 @@ export const Home = () => {
             <span className={hcc__number}>0</span>
           </strong>
         </div>
+
+        <EmptyTasks />
       </section>
     </>
   )

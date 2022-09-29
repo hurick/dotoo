@@ -1,0 +1,23 @@
+.emptyTasks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-top: 1px solid var(--gray-400);
+  padding-top: 4rem;
+}
+
+.e__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1rem;
+
+  color: var(--gray-300);
+  line-height: var(--lh-medium);
+}
+
+.ec__title { font-weight: var(--bold); }

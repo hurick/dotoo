@@ -3,7 +3,7 @@ import iconRocket from '../../assets/rocket.svg'
 import styles from './Header.module.css'
 
 export const Header = () => {
-  const { header, h__logo, hl__title, hlt__detail } = styles;
+  const { header, h__logo, hl__title, hlt__detail } = styles
 
   return (
     <header className={header}>
