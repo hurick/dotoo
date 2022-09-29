@@ -48,3 +48,8 @@
 }
 
 .t__create:hover { background-color: var(--blue) }
+
+.t__create:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}

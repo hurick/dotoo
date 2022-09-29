@@ -16,20 +16,23 @@ export const Home = () => {
     hcc__number
   } = styles
   
-  const [tasks, setTasks] = useState<Tasks[]>([
-    { id: 1, isCompleted: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper.' },
-    { id: 2, isCompleted: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper.' },
-    { id: 3, isCompleted: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper.' },
-    { id: 4, isCompleted: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper.' },
-    { id: 5, isCompleted: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper.' }
-  ]);
+  const [tasks, setTasks] = useState<Tasks[]>([]);
+
+  const createNewTask = (content: string) => {
+    setTasks([
+      { id: tasks.length + 1, isCompleted: false, content },
+      ...tasks
+    ])
+  }
 
   return (
     <>
       <Header />
 
       <section className={home}>
-        <TaskCreator />
+        <TaskCreator
+          onCreateTask={createNewTask}
+        />
 
         <div className={h__counters}>
           <strong className={hc__created}>
@@ -39,7 +42,7 @@ export const Home = () => {
 
           <strong className={hc__completed}>
             <span>Completed</span>
-            <span className={hcc__number}>0</span>
+            <span className={hcc__number}>0 de 0</span>
           </strong>
         </div>
 
