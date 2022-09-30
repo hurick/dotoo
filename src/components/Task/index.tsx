@@ -6,11 +6,12 @@ import { Tasks } from './Task'
 import styles from './Task.module.css'
 
 interface TaskProps {
-  task: Tasks,
+  task: Tasks
   onDeleteTask: (id: number) => void
+  onToggleTaskCompletion: (id: number) => void
 }
 
-export const Task = ({ task, onDeleteTask }: TaskProps) => {
+export const Task = ({ task, onDeleteTask, onToggleTaskCompletion }: TaskProps) => {
   const {
     taskItem, ti__hiddenCheckbox, ti__checkbox,
     ti__content, ti__delete, tic__check, is__checked
@@ -19,22 +20,21 @@ export const Task = ({ task, onDeleteTask }: TaskProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const TASK_STYLES = !isChecked ? taskItem : `${taskItem} ${is__checked}`
 
-  const handleTaskChecked = (ev: ChangeEvent<HTMLInputElement>) => {
+  const handleTaskChecked = (ev: ChangeEvent<HTMLInputElement>, id: number) => {
     setIsChecked(ev.target.checked)
+    onToggleTaskCompletion(id)
   }
 
-  const handleDeleteTask = (id: number) => {
-    onDeleteTask(id)
-  }
+  const handleDeleteTask = (id: number) => onDeleteTask(id)
 
   return (
     <div className={TASK_STYLES}>
       <input
-        className={ti__hiddenCheckbox}
         type="checkbox"
         name="isComplete"
-        onChange={ev => handleTaskChecked(ev)}
         id={task.id.toString()}
+        className={ti__hiddenCheckbox}
+        onChange={ev => handleTaskChecked(ev, task.id)}
       />
 
       <label
@@ -49,8 +49,8 @@ export const Task = ({ task, onDeleteTask }: TaskProps) => {
       </p>
 
       <button
-        className={ti__delete}
         type="button"
+        className={ti__delete}
         title="Delete this task"
         onClick={() => handleDeleteTask(task.id)}
       >

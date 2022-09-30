@@ -1,15 +1,13 @@
 import { FormEvent, useState } from 'react'
-
 import { PlusCircle } from 'phosphor-react'
 
 import styles from './TaskCreator.module.css'
 
 interface TaskCreatorProps {
   onCreateTask: (content: string) => void
-  isExistingTask: boolean
 }
 
-export const TaskCreator = ({ onCreateTask, isExistingTask }: TaskCreatorProps) => {
+export const TaskCreator = ({ onCreateTask }: TaskCreatorProps) => {
   const { taskForm, t__input, t__create } = styles
 
   const [taskText, setTaskText] = useState<string>("")
@@ -18,25 +16,23 @@ export const TaskCreator = ({ onCreateTask, isExistingTask }: TaskCreatorProps) 
     ev.preventDefault()
 
     onCreateTask(taskText)
-
-    !isExistingTask && setTaskText('')
+    setTaskText('')
   }
 
   return (
     <form onSubmit={data => handleNewTask(data)} className={taskForm}>
       <input
-        required
-        className={t__input}
         name="task"
         type="text"
-        placeholder="Need to trim the grass before late afternoon..."
-        onChange={ev => setTaskText(ev.target.value)}
         value={taskText}
+        className={t__input}
+        onChange={ev => setTaskText(ev.target.value)}
+        placeholder="Need to trim the grass before late afternoon..."
       />
       
       <button
-        className={t__create}
         type="submit"
+        className={t__create}
         disabled={taskText === ''}
       >
         <span>Create</span>

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 import { toast } from 'react-toastify'
 
 import { Header } from "../components/Header"
@@ -12,33 +11,33 @@ import { Tasks } from '../components/Task/Task'
 import styles from './Home.module.css'
 
 export const Home = () => {
-  const {
-    home, h__counters,
-    hc__created, hc__completed,
-    hcc__number
-  } = styles
+  const { home, h__counters, hc__created, hc__completed, hcc__number } = styles
   
   const [tasks, setTasks] = useState<Tasks[]>([]);
-  const [existingTask, setExistingTask] = useState<boolean>(false);
+
+  const completedTasksCount = tasks.filter(task => task.isCompleted !== false).length
 
   const createNewTask = (content: string) => {
     const taskAlreadyExists = tasks.find(task => task.content === content)
 
-    if (taskAlreadyExists) {
-      setExistingTask(true);
-      toast.info("Can't create a task that exists", { theme: 'dark' })
-    } else {
-      setExistingTask(true)
-      setTasks([
+    taskAlreadyExists
+      ? toast.info("Can't create a task that exists", { theme: 'dark' })
+      : setTasks([
         { id: tasks.length + 1, isCompleted: false, content },
         ...tasks
       ])
-    }
+  }
+
+  const toggleTaskCompletion = (id: number) => {
+    setTasks(tasks.map(task => task.id === id
+      ? {...task, isCompleted: !task.isCompleted}
+      : {...task}
+    ));
   }
 
   const deleteExistingTask = (id: number) => {
-    const filtedTaskList = tasks.filter(task => task.id !== id)
-    setTasks(filtedTaskList)
+    const filteredTaskList = tasks.filter(task => task.id !== id)
+    setTasks(filteredTaskList)
   }
 
   return (
@@ -46,10 +45,7 @@ export const Home = () => {
       <Header />
 
       <section className={home}>
-        <TaskCreator
-          onCreateTask={createNewTask}
-          isExistingTask={existingTask}
-        />
+        <TaskCreator onCreateTask={createNewTask} />
 
         <div className={h__counters}>
           <strong className={hc__created}>
@@ -59,19 +55,20 @@ export const Home = () => {
 
           <strong className={hc__completed}>
             <span>Completed</span>
-            <span className={hcc__number}>0 de 0</span>
+            <span className={hcc__number}>{completedTasksCount} de {tasks.length}</span>
           </strong>
         </div>
 
         { tasks.length === 0
-            ? <EmptyTasks />
-            : tasks.map(task => (
-              <Task
-                key={task.id}
-                task={task}
-                onDeleteTask={deleteExistingTask}
-              />
-            ))
+          ? <EmptyTasks />
+          : tasks.map(task => (
+            <Task
+              task={task}
+              key={task.id}
+              onDeleteTask={deleteExistingTask}
+              onToggleTaskCompletion={toggleTaskCompletion}
+            />
+          ))
         }
       </section>
     </>
