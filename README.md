@@ -77,7 +77,7 @@ export default defineConfig({
 ## 📃 License
 
 This project is under MIT license.  
-Read more about it <a target="_blank" href="https://github.com/hurick/feedev/blob/main/LICENSE" title="MIT License file">here</a>.
+Read more about it <a target="_blank" href="https://github.com/hurick/dotoo/blob/main/LICENSE" title="MIT License file">here</a>.
 
 ## ✨ Extras
 
