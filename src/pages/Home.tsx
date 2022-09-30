@@ -12,7 +12,7 @@ import styles from './Home.module.css'
 
 export const Home = () => {
   const { home, h__counters, hc__created, hc__completed, hcc__number } = styles
-  
+
   const [tasks, setTasks] = useState<Tasks[]>([]);
 
   const completedTasksCount = tasks.filter(task => task.isCompleted !== false).length
@@ -55,7 +55,7 @@ export const Home = () => {
 
           <strong className={hc__completed}>
             <span>Completed</span>
-            <span className={hcc__number}>{completedTasksCount} de {tasks.length}</span>
+            <span className={hcc__number}>{completedTasksCount} out of {tasks.length}</span>
           </strong>
         </div>
 
